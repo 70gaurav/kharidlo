@@ -1,8 +1,17 @@
-
+import { Link } from "react-router-dom";
 function Home() {
   return (
-    <div>home</div>
-  )
+    <div className="home">
+      <section></section>
+      <h1>
+        Latest Products
+        <Link to="/search" className="findmore">
+          More
+        </Link>
+      </h1>
+      <main></main>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

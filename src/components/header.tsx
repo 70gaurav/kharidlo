@@ -1,17 +1,29 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import {
+  FaSearch,
+  FaShoppingBag,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
 import { useState } from "react";
 const Header = () => {
   const user = { _id: "abc", role: "admin" };
 
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const logoutHandler = () => {
+    setIsOpen(false);
+  };
   return (
     <nav className="header">
-      <Link to={"/"}>Home</Link>
-      <Link to={"/search"}>
+      <Link onClick={() => setIsOpen(false)} to={"/"}>
+        Home
+      </Link>
+      <Link onClick={() => setIsOpen(false)} to={"/search"}>
         <FaSearch />
       </Link>
-      <Link to={"/cart"}>
+      <Link onClick={() => setIsOpen(false)} to={"/cart"}>
         <FaShoppingBag />
       </Link>
       {user?._id ? (
@@ -26,8 +38,8 @@ const Header = () => {
               )}
 
               <Link to="/orders">Orders</Link>
-              <button>
-                <FaSignOutAlt/>
+              <button onClick={logoutHandler}>
+                <FaSignOutAlt />
               </button>
             </div>
           </dialog>
