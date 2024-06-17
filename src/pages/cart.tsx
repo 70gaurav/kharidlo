@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { VscError } from "react-icons/vsc";
-// const cartItems = [];
+import CartItem from "../components/cart-item";
+const cartItems = [
+  {
+    productId: "asedr",
+    photo: "https://m.media-amazon.com/images/I/71jG+e7roXL._SX679_.jpg",
+    name: "Macbook",
+    price: 3000,
+    quantity: 4,
+    stock: 10,
+  },
+];
 const subTotal = 4000;
 const tax = Math.round(subTotal * 0.18);
 const shippingCharges = 200;
@@ -23,13 +33,17 @@ function Cart() {
   }, [couponCode]);
   return (
     <div className="cart">
-      <main></main>
+      <main>
+        {cartItems.map((item, index) => (
+          <CartItem key={index} cartItem={item} />
+        ))}
+      </main>
       <aside>
         <p>Subtotal: ₹{subTotal}</p>
         <p>Shipping Charges: ₹{shippingCharges}</p>
         <p>Tax: ₹{tax}</p>
         <p>
-          Discount: <em> - ₹{discount}</em>
+          Discount: <em className="red"> - ₹{discount}</em>
         </p>
         <p>
           <b>Total: ₹{total}</b>
