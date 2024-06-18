@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 const Header = () => {
-  const user = { _id: "abc", role: "admin" };
+  const user = { _id: "h1", role: "admin" };
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <nav className="header">
       <Link onClick={() => setIsOpen(false)} to={"/"}>
-        Home
+        HOME
       </Link>
       <Link onClick={() => setIsOpen(false)} to={"/search"}>
         <FaSearch />
@@ -54,4 +54,3 @@ const Header = () => {
 };
 
 export default Header;
- 
