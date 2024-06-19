@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProductCard from "../components/product-card";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -6,6 +7,11 @@ function Search() {
   const [maxPrice, setMaxPrice] = useState(100000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
+
+  const isPrevPage = page > 1;
+  const isNextPage = page < 10;
+
+  const addToCartHandler = () => {};
 
   return (
     <div className="product-search-page">
@@ -51,6 +57,35 @@ function Search() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
+        <div className="search-product-list">
+          <ProductCard
+            productId="1233"
+            photo="https://m.media-amazon.com/images/I/71jG+e7roXL._SX679_.jpg"
+            price={234}
+            name="macbook"
+            handler={addToCartHandler}
+            stock={23}
+          />
+        </div>
+
+        <article>
+          <button
+            disabled={!isPrevPage}
+            onClick={() => setPage((prev) => prev - 1)}
+          >
+            Previous
+          </button>
+          <span>
+            {page} of {10}
+          </span>
+          <button
+            disabled={!isNextPage}
+            onClick={() => setPage((prev) => prev + 1)}
+          >
+            Next
+          </button>
+        </article>
       </main>
     </div>
   );
