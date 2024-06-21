@@ -24,5 +24,9 @@ export const addNewUser = async (
       success: true,
       message: `Welcome ${user.name}`,
     });
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).send({
+      message: "Internal server error",
+    });
+  }
 };
